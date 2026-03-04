@@ -104,62 +104,143 @@ function skillPath(skill) {
   return `https://github.com/mohitmishra786/low-level-dev-skills/tree/main/skills/${catDirMap[skill.category]}/${skill.name}/SKILL.md`;
 }
 
+// Language bundles with subcategories.
+// Each entry has:
+//   tag, label, desc, color  — same as before (drives the card header + "install all" cmd)
+//   subcategories            — array of { label, skills[] } for per-subcategory copy rows
+// The top-level `cmd` is auto-generated from all subcategory skills at render time.
 const tagInstalls = [
   {
     tag: 'c-cpp',
     label: 'C / C++',
-    desc: 'Compilers, debuggers, build systems, profilers, binaries',
+    desc: 'Full C/C++ toolchain — compilers, debuggers, profilers, build systems, binaries, safety, and low-level programming',
     color: 'cyan',
-    cmd: 'npx skills add mohitmishra786/low-level-dev-skills --skill gcc clang llvm msvc-cl cross-gcc pgo cpp-modules cpp-templates cmake make ninja meson conan-vcpkg static-analysis build-acceleration bazel include-what-you-use gdb lldb core-dumps concurrency-debugging debug-optimized-builds dwarf-debug-format linux-perf valgrind flamegraphs strace-ltrace heaptrack intel-vtune-amd-uprof hardware-counters sanitizers fuzzing binary-hardening elf-inspection linkers-lto binutils dynamic-linking assembly-x86 assembly-arm assembly-riscv interpreters simd-intrinsics memory-model cpu-cache-opt cpp-coroutines linux-kernel-modules',
+    subcategories: [
+      {
+        label: 'Compilers',
+        skills: ['gcc', 'clang', 'llvm', 'msvc-cl', 'cross-gcc', 'pgo', 'cpp-modules', 'cpp-templates'],
+      },
+      {
+        label: 'Debuggers',
+        skills: ['gdb', 'lldb', 'core-dumps', 'concurrency-debugging', 'debug-optimized-builds', 'dwarf-debug-format'],
+      },
+      {
+        label: 'Profilers',
+        skills: ['linux-perf', 'valgrind', 'flamegraphs', 'strace-ltrace', 'heaptrack', 'intel-vtune-amd-uprof', 'hardware-counters'],
+      },
+      {
+        label: 'Build Systems',
+        skills: ['cmake', 'make', 'ninja', 'meson', 'conan-vcpkg', 'static-analysis', 'build-acceleration', 'bazel', 'include-what-you-use'],
+      },
+      {
+        label: 'Binaries',
+        skills: ['elf-inspection', 'linkers-lto', 'binutils', 'dynamic-linking'],
+      },
+      {
+        label: 'Safety & Runtimes',
+        skills: ['sanitizers', 'fuzzing', 'binary-hardening'],
+      },
+      {
+        label: 'Low-Level Programming',
+        skills: ['assembly-x86', 'assembly-arm', 'assembly-riscv', 'simd-intrinsics', 'memory-model', 'cpu-cache-opt', 'interpreters', 'cpp-coroutines', 'linux-kernel-modules'],
+      },
+    ],
   },
   {
     tag: 'rust',
     label: 'Rust',
-    desc: 'rustc, Cargo, debugging, profiling, FFI, cross, async, security, no_std',
+    desc: 'Full Rust toolchain — rustc, Cargo, debugging, profiling, FFI, cross-compilation, async internals, safety, and no_std',
     color: 'amber',
-    cmd: 'npx skills add mohitmishra786/low-level-dev-skills --skill rustc-basics cargo-workflows rust-debugging rust-profiling rust-ffi rust-cross rust-sanitizers-miri rust-unsafe rust-async-internals rust-security rust-no-std rust-build-times',
+    subcategories: [
+      {
+        label: 'Compiler & Cargo',
+        skills: ['rustc-basics', 'cargo-workflows', 'rust-build-times'],
+      },
+      {
+        label: 'Debugging & Profiling',
+        skills: ['rust-debugging', 'rust-profiling'],
+      },
+      {
+        label: 'FFI & Cross-compilation',
+        skills: ['rust-ffi', 'rust-cross', 'rust-no-std'],
+      },
+      {
+        label: 'Async & Internals',
+        skills: ['rust-async-internals', 'rust-unsafe'],
+      },
+      {
+        label: 'Safety & Security',
+        skills: ['rust-sanitizers-miri', 'rust-security'],
+      },
+    ],
   },
   {
     tag: 'zig',
     label: 'Zig',
-    desc: 'Compiler, build system, C interop, debugging, cross, testing, comptime',
+    desc: 'Full Zig toolchain — compiler, build system, C interop, debugging, cross-compilation, testing, and comptime',
     color: 'magenta',
-    cmd: 'npx skills add mohitmishra786/low-level-dev-skills --skill zig-compiler zig-build-system zig-cinterop zig-debugging zig-cross zig-testing zig-comptime',
+    subcategories: [
+      {
+        label: 'Compiler & Build',
+        skills: ['zig-compiler', 'zig-build-system'],
+      },
+      {
+        label: 'C Interop',
+        skills: ['zig-cinterop'],
+      },
+      {
+        label: 'Debugging & Cross',
+        skills: ['zig-debugging', 'zig-cross'],
+      },
+      {
+        label: 'Testing & Comptime',
+        skills: ['zig-testing', 'zig-comptime'],
+      },
+    ],
   },
   {
     tag: 'embedded',
     label: 'Embedded',
-    desc: 'FreeRTOS, Zephyr, OpenOCD, linker scripts, embedded Rust',
+    desc: 'Embedded systems — RTOS, hardware debugging/flashing, linker scripts, and embedded Rust',
     color: 'green',
-    cmd: 'npx skills add mohitmishra786/low-level-dev-skills --skill freertos zephyr openocd-jtag linker-scripts embedded-rust embedded-rust rust-no-std cross-gcc',
+    subcategories: [
+      {
+        label: 'RTOS',
+        skills: ['freertos', 'zephyr'],
+      },
+      {
+        label: 'Debug & Flash',
+        skills: ['openocd-jtag', 'cross-gcc'],
+      },
+      {
+        label: 'Linker & Memory',
+        skills: ['linker-scripts'],
+      },
+      {
+        label: 'Embedded Rust',
+        skills: ['embedded-rust', 'rust-no-std'],
+      },
+    ],
   },
   {
     tag: 'observability',
     label: 'Observability & Security',
-    desc: 'eBPF, eBPF Rust, binary hardening, WebAssembly',
+    desc: 'eBPF tracing, WebAssembly runtimes, and binary hardening',
     color: 'red',
-    cmd: 'npx skills add mohitmishra786/low-level-dev-skills --skill ebpf ebpf-rust binary-hardening wasm-emscripten wasm-wasmtime rust-security',
-  },
-  {
-    tag: 'core',
-    label: 'Core Essentials',
-    desc: 'Compiler + debugger + profiler for all three languages',
-    color: 'green',
-    cmd: 'npx skills add mohitmishra786/low-level-dev-skills --skill gcc clang rustc-basics zig-compiler gdb lldb linux-perf cmake cargo-workflows zig-build-system',
-  },
-  {
-    tag: 'safety',
-    label: 'Safety & Fuzzing',
-    desc: 'Sanitizers, fuzzing, Miri, binary hardening, concurrency debugging',
-    color: 'red',
-    cmd: 'npx skills add mohitmishra786/low-level-dev-skills --skill sanitizers fuzzing rust-sanitizers-miri rust-unsafe binary-hardening concurrency-debugging rust-security',
-  },
-  {
-    tag: 'profilers',
-    label: 'Profilers',
-    desc: 'perf, flamegraphs, valgrind, heaptrack, VTune, hardware counters',
-    color: 'green',
-    cmd: 'npx skills add mohitmishra786/low-level-dev-skills --skill linux-perf valgrind flamegraphs strace-ltrace heaptrack rust-profiling intel-vtune-amd-uprof hardware-counters',
+    subcategories: [
+      {
+        label: 'eBPF',
+        skills: ['ebpf', 'ebpf-rust'],
+      },
+      {
+        label: 'WebAssembly',
+        skills: ['wasm-emscripten', 'wasm-wasmtime'],
+      },
+      {
+        label: 'Hardening',
+        skills: ['binary-hardening', 'rust-security'],
+      },
+    ],
   },
 ];
 
@@ -229,27 +310,78 @@ function renderSkills(filter = 'all') {
   `).join('');
 }
 
+const BASE_CMD = 'npx skills add mohitmishra786/low-level-dev-skills --skill';
+
+function buildCmd(skills) {
+  return `${BASE_CMD} ${skills.join(' ')}`;
+}
+
+function allSkillsFor(entry) {
+  return entry.subcategories.flatMap(s => s.skills);
+}
+
 function renderTagInstalls() {
   const grid = document.getElementById('tagGrid');
   if (!grid) return;
-  grid.innerHTML = tagInstalls.map(t => `
-    <div class="tag-card tag-card--${t.color}">
-      <div class="tag-label">${t.label}</div>
-      <p class="tag-desc">${t.desc}</p>
-      <div class="tag-cmd-wrap">
-        <code class="tag-cmd">${t.cmd}</code>
-        <button class="tag-copy-btn" data-cmd="${t.cmd}" title="Copy">[COPY]</button>
-      </div>
-    </div>
-  `).join('');
 
+  grid.innerHTML = tagInstalls.map(t => {
+    const allSkills = allSkillsFor(t);
+    const allCmd = buildCmd(allSkills);
+
+    const subcatRows = t.subcategories.map(sub => {
+      const subCmd = buildCmd(sub.skills);
+      return `
+        <div class="subcat-row">
+          <span class="subcat-label">${sub.label}</span>
+          <span class="subcat-skills">${sub.skills.map(s => `<code class="subcat-skill-chip">${s}</code>`).join('')}</span>
+          <button class="tag-copy-btn subcat-copy-btn" data-cmd="${subCmd}" title="Copy ${sub.label} skills">[COPY]</button>
+        </div>`;
+    }).join('');
+
+    return `
+      <div class="tag-card tag-card--${t.color}">
+        <div class="tag-card-header">
+          <div>
+            <div class="tag-label">${t.label}</div>
+            <p class="tag-desc">${t.desc}</p>
+          </div>
+          <button class="tag-toggle-btn" aria-expanded="false" aria-label="Show subcategories for ${t.label}">[+]</button>
+        </div>
+        <div class="tag-cmd-wrap">
+          <code class="tag-cmd">${allCmd}</code>
+          <button class="tag-copy-btn" data-cmd="${allCmd}" title="Copy all ${t.label} skills">[COPY ALL]</button>
+        </div>
+        <div class="tag-subcats" hidden>
+          ${subcatRows}
+        </div>
+      </div>`;
+  }).join('');
+
+  // Wire up copy buttons
   grid.querySelectorAll('.tag-copy-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
       navigator.clipboard.writeText(btn.dataset.cmd).then(() => {
         const orig = btn.textContent;
         btn.textContent = 'COPIED!';
         setTimeout(() => { btn.textContent = orig; }, 2000);
       });
+    });
+  });
+
+  // Wire up expand/collapse toggles
+  grid.querySelectorAll('.tag-toggle-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const card = btn.closest('.tag-card');
+      const subcats = card.querySelector('.tag-subcats');
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!expanded));
+      btn.textContent = expanded ? '[+]' : '[-]';
+      if (expanded) {
+        subcats.setAttribute('hidden', '');
+      } else {
+        subcats.removeAttribute('hidden');
+      }
     });
   });
 }

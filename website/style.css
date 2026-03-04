@@ -624,6 +624,85 @@ main {
   color: var(--accent);
 }
 
+/* ── Tag card header: label+desc on the left, toggle on the right ── */
+.tag-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+/* Toggle [+] / [-] button */
+.tag-toggle-btn {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  padding: 0.2rem 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: all 0.2s;
+  align-self: flex-start;
+  margin-top: 0.1rem;
+}
+
+.tag-toggle-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* Subcategory accordion panel */
+.tag-subcats {
+  margin-top: 0.75rem;
+  border-top: 1px solid var(--border);
+  padding-top: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+/* One subcategory row */
+.subcat-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.subcat-label {
+  font-size: 0.72rem;
+  color: var(--amber);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  min-width: 9rem;
+  padding-top: 0.15rem;
+}
+
+.subcat-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  flex: 1;
+}
+
+.subcat-skill-chip {
+  font-size: 0.65rem;
+  color: var(--text-dim);
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  padding: 0.05rem 0.3rem;
+  white-space: nowrap;
+}
+
+.subcat-copy-btn {
+  font-size: 0.65rem !important;
+  padding: 0.15rem 0.4rem !important;
+  align-self: flex-start;
+}
+
 /* Tree comment color */
 .tree-view .comment {
   color: var(--text-dim);
